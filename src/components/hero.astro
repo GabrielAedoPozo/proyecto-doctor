@@ -1,32 +1,46 @@
----
-const videoId = '8_nVbI7NcOw';
-const videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&showinfo=0&autohide=1`;
----
+<section class="relative isolate grid min-h-screen place-items-center overflow-hidden bg-[#050505]">
+	<video
+		class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+		src="/video/hero-video.mp4"
+		autoplay
+		muted
+		loop
+		playsinline
+		disablepictureinpicture
+		disableRemotePlayback
+	></video>
 
-<section class="relative isolate grid min-h-[100svh] place-items-center overflow-hidden bg-[#050505]">
-	<div class="pointer-events-none absolute inset-0 -z-20">
-		<iframe
-			class="absolute left-1/2 top-1/2 h-[56.25vw] min-h-screen min-w-[177.78vh] w-screen -translate-x-1/2 -translate-y-1/2 border-0"
-			src={videoSrc}
-			title="Video de fondo"
-			loading="eager"
-			referrerpolicy="strict-origin-when-cross-origin"
-			allow="autoplay; encrypted-media; picture-in-picture"
-			allowfullscreen
-		></iframe>
+	<div class="absolute inset-0 -z-10 bg-black/50"></div>
+
+	<div class="relative z-10 max-w-2xl mt-30 text-center text-[#f7f1e8]">
+		<p class="mb-3 text-sm uppercase tracking-widest opacity-80">Dr. Acosta</p>
+		<h1 class="font-['Cormorant_Garamond',serif] text-8xl font-semibold leading-none text-balance">
+			Un médico que te acompaña, con tiempo.
+		</h1>
+		<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed opacity-90">
+			Consultas cercanas, claras y hechas para ti.
+		</p>
 	</div>
 
-	<div
-		class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.28),rgba(0,0,0,0.82))] bg-black/45"
-	></div>
+	<div class="flex gap-15 justify-center items-center w-400 h-50 border-2 border-white rounded-3xl  backdrop-blur-mdd">
+		<div class="text-white">
+			<h2 class="text-2xl font-medium">Atención Personalizada</h2>
+			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
+		</div>
 
-	<div class="relative z-10 max-w-2xl px-8 text-center text-[#f7f1e8] sm:px-6">
-		<p class="mb-3 text-sm uppercase tracking-[0.24em] opacity-80 sm:text-xs">Dr. Acosta</p>
-		<h1 class="font-['Cormorant_Garamond',serif] text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.95] text-balance">
-			Medicina interna, con tiempo para escucharte.
-		</h1>
-		<p class="mx-auto mt-4 max-w-xl text-[clamp(1rem,1.8vw,1.2rem)] leading-[1.6] opacity-90">
-			Un enfoque cercano, claro y personalizado para el cuidado de tu salud.
-		</p>
+		<div class="text-white">
+			<h2 class="text-2xl font-medium">Experiencia y Confianza</h2>
+			<p>Años de formación y práctica <br> médica a tu servicio</p>
+		</div>
+
+		<div class="text-white">
+			<h2 class="text-2xl font-medium">Tiempo de Calidad</h2>
+			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
+		</div>
+
+		<div class="text-white">
+			<h2 class="text-2xl font-medium">Acompañamiento real</h2>
+			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
+		</div>
 	</div>
 </section>
