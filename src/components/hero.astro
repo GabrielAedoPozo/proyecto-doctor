@@ -39,7 +39,7 @@ const services = [
 ];
 ---
 
-<section class="relative isolate grid min-h-screen place-items-center overflow-hidden bg-[#050505] px-8 py-16">
+<section class="relative isolate grid min-h-screen place-items-center overflow-hidden bg-[#050505] px-5 py-16 sm:px-8">
 	<video
 		class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
 		src="/video/hero-video.mp4"
@@ -53,18 +53,18 @@ const services = [
 
 	<div class="absolute inset-0 -z-10 bg-black/50"></div>
 
-		<div class="relative z-10 mt-24 max-w-2xl text-center text-[#f7f1e8]">
+		<div class="relative z-10 mt-20 max-w-2xl text-center text-[#f7f1e8] lg:mt-24">
 		<p class="mb-3 text-sm uppercase tracking-widest opacity-80">Dr. Acosta</p>
-		<h1 class="font-['Cormorant_Garamond',serif] text-8xl font-semibold leading-none text-balance">
+		<h1 class="font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-balance sm:text-7xl lg:text-8xl">
 			Un médico que te acompaña, con tiempo.
 		</h1>
-		<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed opacity-90">
+		<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed opacity-90 lg:text-lg">
 			Consultas cercanas, claras y hechas para ti.
 		</p>
 	</div>
 
-	<div class="relative z-10 mt-12 w-full max-w-7xl rounded-4xl border border-white/12 bg-white/8 p-8 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-		<div class="grid grid-cols-4 gap-4">
+	<div class="relative z-10 mt-10 w-full max-w-7xl rounded-3xl border border-white/12 bg-white/8 p-5 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6 lg:mt-12 lg:rounded-4xl lg:p-8">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
 				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
 					<i class="fa-solid fa-user text-xl"></i>
@@ -87,7 +87,7 @@ const services = [
 				</div>
 			</article>
 
-			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+			<article class="hidden items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8 lg:flex">
 				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
 					<i class="fa-regular fa-clock text-xl"></i>
 				</span>
@@ -98,7 +98,7 @@ const services = [
 				</div>
 			</article>
 
-			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+			<article class="hidden items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8 lg:flex">
 				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
 					<i class="fa-regular fa-heart text-xl"></i>
 				</span>
@@ -114,55 +114,55 @@ const services = [
 
 
 <section class="relative min-h-screen w-full overflow-hidden bg-white text-[#1c1a17]">
-	<div class="mx-auto w-full max-w-7xl px-16 py-20">
-		<div class="grid grid-cols-[44%_56%] items-center gap-16">
+	<div class="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:px-16 lg:py-20">
+		<div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[44%_56%] lg:gap-16">
 			<div class="flex justify-center">
 				<img
 					src="/img/dracosta.png"
 					alt="Dr. Acosta"
-					class="h-auto max-h-128 w-auto max-w-xl object-contain object-center"
+					class="h-auto max-h-72 w-auto max-w-full object-contain object-center sm:max-h-96 lg:max-h-128 lg:max-w-xl"
 				/>
 			</div>
 
-			<div class="relative flex justify-center px-8 py-20 mt-20">
-				<div class="w-full max-w-3xl pr-8">
+			<div class="relative flex justify-center px-0 py-4 mt-0 lg:px-8 lg:py-20 lg:mt-20">
+				<div class="w-full max-w-3xl pr-0 lg:pr-8">
 					<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Acerca de</p>
-					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-balance text-black">
+					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-balance text-black sm:text-5xl lg:text-7xl">
 						Dr. Oscar Acosta
 					</h2>
-					<p class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-black">
+					<p class="mt-4 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-black sm:text-5xl lg:text-7xl">
 						Medicina con enfoque preventivo y humano.
 					</p>
-					<p class="mt-8 max-w-2xl text-xl leading-9 text-black">
+					<p class="mt-6 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-8 lg:text-xl lg:leading-9">
 						Experiencia en salud ocupacional, planeación estratégica y programas preventivos de higiene, salud mental, ergonomía y medicina laboral.
 					</p>
-					<p class="mt-5 max-w-2xl text-xl leading-9 text-black">
+					<p class="mt-4 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-5 lg:text-xl lg:leading-9">
 						También he liderado programas de salud empresarial y tengo experiencia en hospitalización, cuidados intensivos y emergencias médicas.
 					</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="mt-16 border-t border-[#eadfce] pt-10">
+		<div class="mt-12 border-t border-[#eadfce] pt-8 lg:mt-16 lg:pt-10">
 			<div class="flex items-end justify-between gap-8">
 				<div>
-					<h3 class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-black">
-						Trayectoria clínica en movimiento.
+					<h3 class="mt-4 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-black sm:text-5xl lg:text-7xl">
+						Mi trayectoria clínica.
 					</h3>
 				</div>
 			</div>
 
-			<div class="relative mt-10 overflow-hidden rounded-4xl border border-[#d9e6d7] bg-white shadow-[0_24px_70px_rgba(31,61,39,0.10)]">
-				<div id="timeline-carousel" class="relative h-192 overflow-hidden">
+			<div class="relative mt-8 overflow-hidden rounded-3xl border border-[#d9e6d7] bg-white shadow-[0_24px_70px_rgba(31,61,39,0.10)] lg:mt-10 lg:rounded-4xl">
+				<div id="timeline-carousel" class="relative h-96 overflow-hidden sm:h-128 lg:h-192">
 					<article class="timeline-slide absolute inset-0 opacity-100 transition-opacity duration-700" data-slide>
 						<img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80" alt="Consulta médica" class="absolute inset-0 h-full w-full object-cover" />
 						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
-						<div class="absolute inset-0 flex items-end p-10">
+						<div class="absolute inset-0 flex items-end p-5 sm:p-7 lg:p-10">
 							<div class="max-w-3xl text-white">
 								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2015 - Actualidad</p>
-								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Director Médico</h4>
-								<p class="mt-4 text-2xl font-medium text-white/90">Active Service Health SAC, Lima, Perú.</p>
-								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Planeación, organización, dirección, implementación, monitoreo y evaluación permanente del proceso de entrega de servicios integrales de calidad con énfasis en salud ocupacional, seguridad y medio ambiente.</p>
+								<h4 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-semibold leading-none text-white sm:text-4xl lg:mt-4 lg:text-6xl">Director Médico</h4>
+								<p class="mt-2 text-base font-medium text-white/90 sm:text-xl lg:mt-4 lg:text-2xl">Active Service Health SAC, Lima, Perú.</p>
+								<p class="mt-3 hidden max-w-2xl text-sm leading-6 text-white/85 sm:block lg:mt-6 lg:text-lg lg:leading-8">Planeación, organización, dirección, implementación, monitoreo y evaluación permanente del proceso de entrega de servicios integrales de calidad con énfasis en salud ocupacional, seguridad y medio ambiente.</p>
 							</div>
 						</div>
 					</article>
@@ -170,12 +170,12 @@ const services = [
 					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
 						<img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1600&q=80" alt="Medicina interna" class="absolute inset-0 h-full w-full object-cover" />
 						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
-						<div class="absolute inset-0 flex items-end p-10">
+						<div class="absolute inset-0 flex items-end p-5 sm:p-7 lg:p-10">
 							<div class="max-w-3xl text-white">
 								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2008 - Actualidad</p>
-								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Medicina Interna</h4>
-								<p class="mt-4 text-2xl font-medium text-white/90">Clínica San Pablo-Surco, Surco - Lima.</p>
-								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención de dolencias complejas en salud en forma ambulatoria, hospitalización y cuidados intensivos.</p>
+								<h4 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-semibold leading-none text-white sm:text-4xl lg:mt-4 lg:text-6xl">Medicina Interna</h4>
+								<p class="mt-2 text-base font-medium text-white/90 sm:text-xl lg:mt-4 lg:text-2xl">Clínica San Pablo-Surco, Surco - Lima.</p>
+								<p class="mt-3 hidden max-w-2xl text-sm leading-6 text-white/85 sm:block lg:mt-6 lg:text-lg lg:leading-8">Atención de dolencias complejas en salud en forma ambulatoria, hospitalización y cuidados intensivos.</p>
 							</div>
 						</div>
 					</article>
@@ -183,12 +183,12 @@ const services = [
 					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
 						<img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1600&q=80" alt="Medicina corporativa" class="absolute inset-0 h-full w-full object-cover" />
 						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
-						<div class="absolute inset-0 flex items-end p-10">
+						<div class="absolute inset-0 flex items-end p-5 sm:p-7 lg:p-10">
 							<div class="max-w-3xl text-white">
 								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2010 - 2015</p>
-								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Médico Corporativo Perú</h4>
-								<p class="mt-4 text-2xl font-medium text-white/90">Odebrecht, Lima.</p>
-								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Responsable de la dirección del sistema de salud de distintas obras, con cobertura en IRSA Sur, IRSA Norte, Muelle Minerales Callao, Bayovar, Trasvase Olmos y Carhua.</p>
+								<h4 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-semibold leading-none text-white sm:text-4xl lg:mt-4 lg:text-6xl">Médico Corporativo Perú</h4>
+								<p class="mt-2 text-base font-medium text-white/90 sm:text-xl lg:mt-4 lg:text-2xl">Odebrecht, Lima.</p>
+								<p class="mt-3 hidden max-w-2xl text-sm leading-6 text-white/85 sm:block lg:mt-6 lg:text-lg lg:leading-8">Responsable de la dirección del sistema de salud de distintas obras, con cobertura en IRSA Sur, IRSA Norte, Muelle Minerales Callao, Bayovar, Trasvase Olmos y Carhua.</p>
 							</div>
 						</div>
 					</article>
@@ -196,12 +196,12 @@ const services = [
 					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
 						<img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1600&q=80" alt="Hospital y urgencias" class="absolute inset-0 h-full w-full object-cover" />
 						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
-						<div class="absolute inset-0 flex items-end p-10">
+						<div class="absolute inset-0 flex items-end p-5 sm:p-7 lg:p-10">
 							<div class="max-w-3xl text-white">
 								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2009 - 2010</p>
-								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Médico internista</h4>
-								<p class="mt-4 text-2xl font-medium text-white/90">ESSALUD Seguro Social de Salud, La Molina - Lima.</p>
-								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención médica ambulatoria, hospitalaria y de emergencia para pacientes que acudían al hospital, con responsabilidad en la implementación y actualización de guías de manejo clínico del adulto.</p>
+								<h4 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-semibold leading-none text-white sm:text-4xl lg:mt-4 lg:text-6xl">Médico internista</h4>
+								<p class="mt-2 text-base font-medium text-white/90 sm:text-xl lg:mt-4 lg:text-2xl">ESSALUD Seguro Social de Salud, La Molina - Lima.</p>
+								<p class="mt-3 hidden max-w-2xl text-sm leading-6 text-white/85 sm:block lg:mt-6 lg:text-lg lg:leading-8">Atención médica ambulatoria, hospitalaria y de emergencia para pacientes que acudían al hospital, con responsabilidad en la implementación y actualización de guías de manejo clínico del adulto.</p>
 							</div>
 						</div>
 					</article>
@@ -209,25 +209,25 @@ const services = [
 					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
 						<img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80" alt="Atención médica" class="absolute inset-0 h-full w-full object-cover" />
 						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
-						<div class="absolute inset-0 flex items-end p-10">
+						<div class="absolute inset-0 flex items-end p-5 sm:p-7 lg:p-10">
 							<div class="max-w-3xl text-white">
 								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2002 - 2008</p>
-								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Coordinador Médico</h4>
-								<p class="mt-4 text-2xl font-medium text-white/90">Policlínico Tarica - Minera Barrick.</p>
-								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención médica ambulatoria, hospitalaria y de emergencia de pacientes del campamento minero La Alborada.</p>
+								<h4 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-semibold leading-none text-white sm:text-4xl lg:mt-4 lg:text-6xl">Coordinador Médico</h4>
+								<p class="mt-2 text-base font-medium text-white/90 sm:text-xl lg:mt-4 lg:text-2xl">Policlínico Tarica - Minera Barrick.</p>
+								<p class="mt-3 hidden max-w-2xl text-sm leading-6 text-white/85 sm:block lg:mt-6 lg:text-lg lg:leading-8">Atención médica ambulatoria, hospitalaria y de emergencia de pacientes del campamento minero La Alborada.</p>
 							</div>
 						</div>
 					</article>
 				</div>
 
-				<div id="timeline-dots" class="pointer-events-auto absolute bottom-8 left-10 z-20 flex items-center gap-2"></div>
+				<div id="timeline-dots" class="pointer-events-auto absolute bottom-4 left-4 z-20 flex items-center gap-2 sm:bottom-8 sm:left-10"></div>
 
-				<div class="absolute bottom-8 right-10 z-20 flex items-center gap-3">
+				<div class="absolute bottom-4 right-4 z-20 flex items-center gap-2 sm:bottom-8 sm:right-10 sm:gap-3">
 					<button
 						id="timeline-prev"
 						type="button"
 						aria-label="Hito anterior"
-						class="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20"
+						class="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 text-sm text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20 sm:h-11 sm:w-11 sm:text-base"
 					>
 						<i class="fa-solid fa-arrow-left"></i>
 					</button>
@@ -235,7 +235,7 @@ const services = [
 						id="timeline-next"
 						type="button"
 						aria-label="Siguiente hito"
-						class="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20"
+						class="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 text-sm text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20 sm:h-11 sm:w-11 sm:text-base"
 					>
 						<i class="fa-solid fa-arrow-right"></i>
 					</button>
@@ -243,25 +243,25 @@ const services = [
 			</div>
 		</div>
 
-				<div class="grid grid-cols-[44%_56%] items-center gap-16">
+				<div class="mt-16 grid grid-cols-1 items-center gap-10 sm:mt-20 lg:mt-0 lg:grid-cols-[44%_56%] lg:gap-16">
 			<div class="flex justify-center">
 				<img
 					src="/img/img42.jpg"
 					alt="Recordatorios y seguimiento de citas"
-					class="h-auto max-h-128 w-auto max-w-xl object-contain object-center"
+					class="h-auto max-h-72 w-auto max-w-full object-contain object-center sm:max-h-96 lg:max-h-128 lg:max-w-xl"
 				/>
 			</div>
 
-			<div class="relative flex justify-center px-8 py-20 mt-20">
-				<div class="w-full max-w-3xl pr-8">
+			<div class="relative flex justify-center px-0 py-4 mt-0 lg:px-8 lg:py-20 lg:mt-20">
+				<div class="w-full max-w-3xl pr-0 lg:pr-8">
 					<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Comunicación</p>
-					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-balance text-black">
+					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-balance text-black sm:text-5xl lg:text-7xl">
 						Toda tu atención, organizada en un solo lugar.
 					</h2>
-					<p class="mt-8 max-w-2xl text-xl leading-9 text-black">
+					<p class="mt-6 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-8 lg:text-xl lg:leading-9">
 						Recibe recordatorios de tus citas y seguimientos de forma automática, sin depender de mensajes sueltos o llamadas que se pierden.
 					</p>
-					<p class="mt-5 max-w-2xl text-xl leading-9 text-black">
+					<p class="mt-4 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-5 lg:text-xl lg:leading-9">
 						Cada consulta queda registrada de forma ordenada, para que tu historia clínica y tus datos estén siempre disponibles cuando los necesites.
 					</p>
 				</div>
@@ -352,10 +352,10 @@ const services = [
 		startAuto();
 	}
 </script>
-<section class="relative bg-[#07110a] text-white">
+<section class="relative mt-10 bg-[#07110a] text-white lg:mt-0">
 
 	<div class="services-stack relative h-screen w-full overflow-hidden">
-		<p class="pointer-events-none absolute left-12 top-10 z-60 font-['Onest',sans-serif] text-3xl font-semibold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]">
+		<p class="pointer-events-none absolute left-5 top-5 z-60 font-['Onest',sans-serif] text-lg font-semibold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)] sm:left-8 sm:top-8 sm:text-2xl lg:left-12 lg:top-10 lg:text-3xl">
 			Mis servicios
 		</p>
 
@@ -363,10 +363,10 @@ const services = [
 			<article class="service-layer absolute inset-0 grid place-items-end overflow-hidden" style={`z-index: ${i + 1}`}>
 				<img src={service.image} alt={service.title} class="service-image absolute inset-0 h-full w-full object-cover" />
 				<div class="absolute inset-0 bg-linear-to-r from-black/80 via-black/45 to-black/20"></div>
-				<div class="service-content relative z-10 w-full px-12 py-12">
+				<div class="service-content relative z-10 w-full px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
 					<div class="max-w-4xl">
-						<p class="text-sm font-semibold uppercase tracking-[0.3em] text-white/75">{service.number} / {service.title}</p>
-						<h3 class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-white">{service.description}</h3>
+						<p class="text-xs font-semibold uppercase tracking-[0.3em] text-white/75 sm:text-sm">{service.number} / {service.title}</p>
+						<h3 class="mt-3 font-['Cormorant_Garamond',serif] text-3xl font-semibold leading-none text-white sm:mt-4 sm:text-5xl lg:text-7xl">{service.description}</h3>
 					</div>
 				</div>
 			</article>
@@ -431,4 +431,53 @@ const services = [
 			}
 		});
 	}
+</script>
+
+<section class="relative mt-10 overflow-hidden bg-white text-[#1c1a17] lg:mt-0">
+	<div class="mx-auto flex w-full max-w-4xl flex-col items-center px-6 py-20 text-center sm:px-8 lg:py-32">
+		<p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#3f6f4a] sm:text-sm sm:tracking-[0.38em]">Siempre disponible</p>
+		<h2 class="mt-6 font-['Cormorant_Garamond',serif] text-5xl font-semibold leading-none text-balance text-black sm:text-7xl lg:text-9xl">
+			Contáctame
+		</h2>
+		<p class="mt-6 max-w-2xl text-base leading-7 text-[#3d3a33] sm:text-lg lg:mt-8 lg:text-xl lg:leading-9">
+			Olvídate de las llamadas perdidas: mi asistente virtual te acompaña cuando lo necesites.
+		</p>
+
+		<div class="mt-10 grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-12">
+			<div class="flex items-start gap-4 rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-5 text-left shadow-sm">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#d9e6d7] bg-white text-[#3f6f4a]">
+					<i class="fa-solid fa-message text-lg"></i>
+				</span>
+				<div class="min-w-0">
+					<h3 class="text-lg font-semibold leading-tight text-black">Dudas resueltas al instante</h3>
+					<p class="mt-2 text-sm leading-6 text-[#5a5548]">Mi asistente virtual está disponible para responderte, sin filas ni esperas.</p>
+				</div>
+			</div>
+
+			<div class="flex items-start gap-4 rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-5 text-left shadow-sm">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#d9e6d7] bg-white text-[#3f6f4a]">
+					<i class="fa-solid fa-gift text-lg"></i>
+				</span>
+				<div class="min-w-0">
+					<h3 class="text-lg font-semibold leading-tight text-black">Nunca olvidamos tu cumpleaños</h3>
+					<p class="mt-2 text-sm leading-6 text-[#5a5548]">Cada año recibirás un correo de felicitación de nuestra parte.</p>
+				</div>
+			</div>
+		</div>
+
+		<button
+			id="contact-open-chat"
+			type="button"
+			class="mt-10 inline-flex items-center gap-3 rounded-full bg-[#1c1a17] px-6 py-3.5 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-base lg:mt-12"
+		>
+			<i class="fa-solid fa-message text-lg text-[#25D366]"></i>
+			Iniciar conversación
+		</button>
+	</div>
+</section>
+
+<script>
+	document.querySelector<HTMLButtonElement>('#contact-open-chat')?.addEventListener('click', () => {
+		document.querySelector<HTMLButtonElement>('#chat-toggle')?.click();
+	});
 </script>

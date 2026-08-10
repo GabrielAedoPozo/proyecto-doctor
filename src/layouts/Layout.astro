@@ -21,15 +21,231 @@ import '../styles/global.css';
 	</head>
 	<body>
 		<slot />
-		<a
-			href="https://wa.me/51980725332?text=Hola%20doctor,%20quisiera%20agendar%20una%20cita"
-			class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_40px_rgba(37,211,102,0.35)] transition-transform duration-300 hover:scale-110"
-			aria-label="Contactar por WhatsApp"
-			target="_blank"
-			rel="noreferrer"
-		>
-			<i class="fa-brands fa-whatsapp text-2xl"></i>
-		</a>
+
+		<div id="whatsapp-widget" class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+			<div
+				id="whatsapp-bubble"
+				class="whatsapp-bubble relative max-w-64 rounded-3xl border border-[#d9e6d7] bg-white px-5 py-4 text-left shadow-[0_20px_50px_rgba(0,0,0,0.25)] sm:max-w-70 sm:px-6 sm:py-5"
+			>
+				<button
+					id="whatsapp-bubble-close"
+					type="button"
+					aria-label="Cerrar mensaje"
+					class="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full border border-[#d9e6d7] bg-white text-[#1c1a17] shadow-sm transition-transform duration-200 hover:scale-110"
+				>
+					<i class="fa-solid fa-xmark text-xs"></i>
+				</button>
+
+				<p class="font-['Onest',sans-serif] text-base font-bold leading-snug text-[#1c1a17]">
+					🤖 ¡Escríbele a nuestro asistente virtual!
+				</p>
+				<p class="mt-2 font-['Onest',sans-serif] text-sm leading-6 text-[#5a5548]">
+					Responde todas tus dudas al instante o te ayuda a agendar tu cita.
+				</p>
+
+				<span class="whatsapp-bubble-tail absolute -bottom-2 right-9 h-4 w-4 rotate-45 border-b border-r border-[#d9e6d7] bg-white"></span>
+			</div>
+
+			<div
+				id="chat-panel"
+				class="chat-panel hidden max-h-[75vh] w-88 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-[#d9e6d7] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:max-w-[calc(100vw-3rem)]"
+			>
+				<div class="flex items-center justify-between gap-3 bg-[#1c1a17] px-5 py-4 text-white">
+					<div class="flex items-center gap-3">
+						<span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366]/20 text-[#25D366]">
+							<i class="fa-solid fa-robot text-lg"></i>
+						</span>
+						<div>
+							<p class="font-['Onest',sans-serif] text-sm font-semibold leading-tight">Asistente virtual</p>
+							<p class="font-['Onest',sans-serif] text-xs text-white/60">Consultorio Dr. Acosta</p>
+						</div>
+					</div>
+					<button
+						id="chat-close"
+						type="button"
+						aria-label="Cerrar chat"
+						class="flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-colors duration-200 hover:text-white"
+					>
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+
+				<div id="chat-messages" class="chat-messages flex h-72 flex-col gap-3 overflow-y-auto bg-[#faf8f4] px-4 py-4 sm:h-96 sm:px-5 sm:py-5"></div>
+
+				<form id="chat-form" class="flex items-center gap-2 border-t border-[#eadfce] bg-white px-4 py-3">
+					<input
+						id="chat-input"
+						type="text"
+						autocomplete="off"
+						placeholder="Escribe tu mensaje..."
+						class="flex-1 rounded-full border border-[#eadfce] bg-[#faf8f4] px-4 py-2.5 font-['Onest',sans-serif] text-sm text-black placeholder:text-[#b7ae9b] focus:border-[#3f6f4a] focus:outline-none"
+					/>
+					<button
+						type="submit"
+						aria-label="Enviar"
+						class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-105"
+					>
+						<i class="fa-solid fa-paper-plane text-sm"></i>
+					</button>
+				</form>
+			</div>
+
+			<button
+				id="chat-toggle"
+				type="button"
+				aria-label="Abrir chat"
+				class="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_40px_rgba(37,211,102,0.35)] transition-transform duration-300 hover:scale-110"
+			>
+				<span class="whatsapp-ping absolute inset-0 rounded-full bg-[#25D366]"></span>
+				<i id="chat-toggle-icon" class="fa-solid fa-message relative text-2xl"></i>
+			</button>
+		</div>
+
+		<script>
+			const bubble = document.querySelector<HTMLElement>('#whatsapp-bubble');
+			const bubbleClose = document.querySelector<HTMLButtonElement>('#whatsapp-bubble-close');
+			const panel = document.querySelector<HTMLElement>('#chat-panel');
+			const toggleButton = document.querySelector<HTMLButtonElement>('#chat-toggle');
+			const toggleIcon = document.querySelector<HTMLElement>('#chat-toggle-icon');
+			const closeButton = document.querySelector<HTMLButtonElement>('#chat-close');
+			const messagesEl = document.querySelector<HTMLElement>('#chat-messages');
+			const formEl = document.querySelector<HTMLFormElement>('#chat-form');
+			const inputEl = document.querySelector<HTMLInputElement>('#chat-input');
+
+			window.setTimeout(() => bubble?.classList.add('is-visible'), 900);
+
+			function dismissBubble() {
+				bubble?.classList.remove('is-visible');
+				bubble?.classList.add('is-dismissed');
+			}
+
+			bubbleClose?.addEventListener('click', dismissBubble);
+
+			type ChatStep = 'name' | 'dob' | 'email' | 'done';
+
+			let step: ChatStep = 'name';
+			let started = false;
+			const answers = { name: '', dob: '', email: '' };
+
+			function addMessage(text: string, from: 'bot' | 'user') {
+				if (!messagesEl) return;
+				const row = document.createElement('div');
+				row.className = from === 'bot' ? 'flex justify-start' : 'flex justify-end';
+
+				const bubbleEl = document.createElement('div');
+				bubbleEl.className =
+					from === 'bot'
+						? 'max-w-[80%] rounded-2xl rounded-bl-sm border border-[#eadfce] bg-white px-4 py-2.5 font-[\'Onest\',sans-serif] text-sm leading-6 text-[#1c1a17] shadow-sm'
+						: 'max-w-[80%] rounded-2xl rounded-br-sm bg-[#25D366] px-4 py-2.5 font-[\'Onest\',sans-serif] text-sm leading-6 text-white shadow-sm';
+				bubbleEl.textContent = text;
+
+				row.appendChild(bubbleEl);
+				messagesEl.appendChild(row);
+				messagesEl.scrollTop = messagesEl.scrollHeight;
+			}
+
+			function showTyping() {
+				const row = document.createElement('div');
+				row.className = 'flex justify-start';
+				row.innerHTML =
+					'<div class="flex items-center gap-1 rounded-2xl rounded-bl-sm border border-[#eadfce] bg-white px-4 py-3 shadow-sm"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+				messagesEl?.appendChild(row);
+				if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+				return row;
+			}
+
+			function botSay(text: string, delay = 700) {
+				const typingRow = showTyping();
+				return new Promise<void>((resolve) => {
+					window.setTimeout(() => {
+						typingRow.remove();
+						addMessage(text, 'bot');
+						resolve();
+					}, delay);
+				});
+			}
+
+			function isValidEmail(value: string) {
+				return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+			}
+
+			function looksLikeDate(value: string) {
+				return /^\d{1,2}[/-]\d{1,2}[/-]\d{2,4}$/.test(value.trim());
+			}
+
+			async function startConversation() {
+				if (started) return;
+				started = true;
+				await botSay('¡Hola! 👋 Soy el asistente virtual del Dr. Acosta.');
+				await botSay('Antes de continuar, necesito algunos datos. ¿Cuál es tu nombre completo?', 900);
+				inputEl?.setAttribute('placeholder', 'Tu nombre completo');
+			}
+
+			formEl?.addEventListener('submit', async (event) => {
+				event.preventDefault();
+				const value = inputEl?.value.trim() ?? '';
+				if (!value || !inputEl || inputEl.disabled) return;
+
+				addMessage(value, 'user');
+				inputEl.value = '';
+
+				if (step === 'name') {
+					answers.name = value;
+					step = 'dob';
+					await botSay(`Gracias, ${value.split(' ')[0]}. ¿Cuál es tu fecha de nacimiento? (dd/mm/aaaa)`);
+					inputEl.setAttribute('placeholder', 'dd/mm/aaaa');
+				} else if (step === 'dob') {
+					if (!looksLikeDate(value)) {
+						await botSay('Esa fecha no parece válida. ¿Puedes escribirla como dd/mm/aaaa?');
+						return;
+					}
+					answers.dob = value;
+					step = 'email';
+					await botSay('Perfecto. Por último, ¿cuál es tu correo electrónico?');
+					inputEl.setAttribute('placeholder', 'tucorreo@ejemplo.com');
+				} else if (step === 'email') {
+					if (!isValidEmail(value)) {
+						await botSay('Ese correo no parece válido, ¿puedes revisarlo?');
+						return;
+					}
+					answers.email = value;
+					step = 'done';
+					await botSay('¡Listo! Ya tengo tus datos. En breve un miembro del equipo del Dr. Acosta se pondrá en contacto contigo. 🩺');
+					inputEl.disabled = true;
+					inputEl.setAttribute('placeholder', 'Conversación finalizada');
+				}
+			});
+
+			function openChat() {
+				panel?.classList.remove('hidden');
+				panel?.classList.add('flex');
+				dismissBubble();
+				toggleIcon?.classList.remove('fa-message');
+				toggleIcon?.classList.add('fa-xmark');
+				toggleButton?.setAttribute('aria-label', 'Cerrar chat');
+				startConversation();
+				window.setTimeout(() => inputEl?.focus(), 300);
+			}
+
+			function closeChat() {
+				panel?.classList.add('hidden');
+				panel?.classList.remove('flex');
+				toggleIcon?.classList.remove('fa-xmark');
+				toggleIcon?.classList.add('fa-message');
+				toggleButton?.setAttribute('aria-label', 'Abrir chat');
+			}
+
+			toggleButton?.addEventListener('click', () => {
+				const isOpen = !panel?.classList.contains('hidden');
+				if (isOpen) {
+					closeChat();
+				} else {
+					openChat();
+				}
+			});
+
+			closeButton?.addEventListener('click', closeChat);
+		</script>
 	</body>
 </html>
 
@@ -42,5 +258,98 @@ import '../styles/global.css';
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+
+	.whatsapp-bubble {
+		opacity: 0;
+		transform: translateY(12px) scale(0.92);
+		pointer-events: none;
+		transition: opacity 0.4s ease, transform 0.4s ease;
+	}
+
+	.whatsapp-bubble.is-visible {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		pointer-events: auto;
+		animation: whatsapp-bubble-bounce 2.6s ease-in-out 0.4s infinite;
+	}
+
+	.whatsapp-bubble.is-dismissed {
+		display: none;
+	}
+
+	@keyframes whatsapp-bubble-bounce {
+		0%, 100% {
+			transform: translateY(0) scale(1);
+		}
+		50% {
+			transform: translateY(-6px) scale(1.02);
+		}
+	}
+
+	.whatsapp-ping {
+		animation: whatsapp-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+	}
+
+	@keyframes whatsapp-ping {
+		0% {
+			opacity: 0.6;
+			transform: scale(1);
+		}
+		75%, 100% {
+			opacity: 0;
+			transform: scale(1.9);
+		}
+	}
+
+	.chat-panel {
+		animation: chat-panel-in 0.3s ease;
+	}
+
+	@keyframes chat-panel-in {
+		from {
+			opacity: 0;
+			transform: translateY(16px) scale(0.96);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.chat-messages::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.chat-messages::-webkit-scrollbar-thumb {
+		background: #d9e6d7;
+		border-radius: 999px;
+	}
+
+	.typing-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 999px;
+		background: #b7ae9b;
+		animation: typing-dot-bounce 1.2s ease-in-out infinite;
+	}
+
+	.typing-dot:nth-child(2) {
+		animation-delay: 0.15s;
+	}
+
+	.typing-dot:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+
+	@keyframes typing-dot-bounce {
+		0%, 60%, 100% {
+			transform: translateY(0);
+			opacity: 0.5;
+		}
+		30% {
+			transform: translateY(-4px);
+			opacity: 1;
+		}
 	}
 </style>

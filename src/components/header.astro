@@ -1,10 +1,66 @@
 <header class="absolute inset-x-0 top-0 z-50">
-    <nav class="mt-10">
-        <ul class="flex gap-12 text-white justify-center">
+    <nav class="mt-10 flex items-center justify-between px-6 lg:mt-10 lg:block lg:px-0">
+        <span class="font-['Cormorant_Garamond',serif] text-2xl font-semibold text-white lg:hidden">Dr. Acosta</span>
+
+        <button
+            id="nav-toggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md lg:hidden"
+        >
+            <i id="nav-toggle-icon" class="fa-solid fa-bars text-lg"></i>
+        </button>
+
+        <ul class="hidden gap-12 text-white justify-center lg:flex">
             <li><a href="">Inicio</a></li>
             <li><a href="">Sobre Mí</a></li>
             <li><a href="">Servicios</a></li>
             <li><a href="">Preguntas Frecuentes</a></li>
         </ul>
     </nav>
+
+    <ul
+        id="nav-menu"
+        class="mx-6 mt-4 hidden flex-col gap-1 rounded-3xl border border-white/15 bg-[#0a0a0a]/95 p-4 text-white backdrop-blur-xl lg:hidden"
+    >
+        <li><a href="" class="block rounded-2xl px-4 py-3 transition-colors duration-200 hover:bg-white/10">Inicio</a></li>
+        <li><a href="" class="block rounded-2xl px-4 py-3 transition-colors duration-200 hover:bg-white/10">Sobre Mí</a></li>
+        <li><a href="" class="block rounded-2xl px-4 py-3 transition-colors duration-200 hover:bg-white/10">Servicios</a></li>
+        <li><a href="" class="block rounded-2xl px-4 py-3 transition-colors duration-200 hover:bg-white/10">Preguntas Frecuentes</a></li>
+    </ul>
 </header>
+
+<script>
+    const toggle = document.querySelector<HTMLButtonElement>('#nav-toggle');
+    const toggleIcon = document.querySelector<HTMLElement>('#nav-toggle-icon');
+    const menu = document.querySelector<HTMLElement>('#nav-menu');
+
+    toggle?.addEventListener('click', () => {
+        const isOpen = menu?.classList.contains('flex');
+
+        if (isOpen) {
+            menu?.classList.remove('flex');
+            menu?.classList.add('hidden');
+            toggleIcon?.classList.remove('fa-xmark');
+            toggleIcon?.classList.add('fa-bars');
+            toggle.setAttribute('aria-expanded', 'false');
+        } else {
+            menu?.classList.remove('hidden');
+            menu?.classList.add('flex');
+            toggleIcon?.classList.remove('fa-bars');
+            toggleIcon?.classList.add('fa-xmark');
+            toggle.setAttribute('aria-expanded', 'true');
+        }
+    });
+
+    menu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('flex');
+            menu.classList.add('hidden');
+            toggleIcon?.classList.remove('fa-xmark');
+            toggleIcon?.classList.add('fa-bars');
+            toggle?.setAttribute('aria-expanded', 'false');
+        });
+    });
+</script>
