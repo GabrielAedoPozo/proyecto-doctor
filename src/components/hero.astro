@@ -1,4 +1,45 @@
-<section class="relative isolate grid min-h-screen place-items-center overflow-hidden bg-[#050505]">
+---
+const services = [
+	{
+		number: '01',
+		title: 'Medicina interna general',
+		description: 'Diagnóstico, tratamiento y seguimiento integral de enfermedades en adultos, con enfoque preventivo.',
+		image: '/img/services/01-medicina-interna.jpg',
+	},
+	{
+		number: '02',
+		title: 'Salud ocupacional',
+		description: 'Exámenes médicos de ingreso, periódicos y de retiro para empresas, según normativa laboral.',
+		image: '/img/services/02-salud-ocupacional.jpg',
+	},
+	{
+		number: '03',
+		title: 'Programas de salud empresarial',
+		description: 'Diseño e implementación de programas preventivos de salud para empresas: higiene, bienestar y control de riesgos.',
+		image: '/img/services/03-programas-empresariales.jpg',
+	},
+	{
+		number: '04',
+		title: 'Ergonomía y prevención de riesgos',
+		description: 'Evaluación de puestos de trabajo y recomendaciones para reducir riesgos físicos y mejorar el bienestar laboral.',
+		image: '/img/services/04-ergonomia.jpg',
+	},
+	{
+		number: '05',
+		title: 'Salud mental laboral',
+		description: 'Acompañamiento en programas de salud mental y manejo del estrés dentro del entorno laboral.',
+		image: '/img/services/05-salud-mental.jpg',
+	},
+	{
+		number: '06',
+		title: 'Cuidados intensivos y emergencias',
+		description: 'Experiencia en manejo de pacientes críticos y seguimiento post-hospitalario, para casos que lo requieran.',
+		image: '/img/services/06-cuidados-intensivos.jpg',
+	},
+];
+---
+
+<section class="relative isolate grid min-h-screen place-items-center overflow-hidden bg-[#050505] px-8 py-16">
 	<video
 		class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
 		src="/video/hero-video.mp4"
@@ -12,7 +53,7 @@
 
 	<div class="absolute inset-0 -z-10 bg-black/50"></div>
 
-	<div class="relative z-10 max-w-2xl mt-30 text-center text-[#f7f1e8]">
+		<div class="relative z-10 mt-24 max-w-2xl text-center text-[#f7f1e8]">
 		<p class="mb-3 text-sm uppercase tracking-widest opacity-80">Dr. Acosta</p>
 		<h1 class="font-['Cormorant_Garamond',serif] text-8xl font-semibold leading-none text-balance">
 			Un médico que te acompaña, con tiempo.
@@ -22,25 +63,372 @@
 		</p>
 	</div>
 
-	<div class="flex gap-15 justify-center items-center w-400 h-50 border-2 border-white rounded-3xl  backdrop-blur-mdd">
-		<div class="text-white">
-			<h2 class="text-2xl font-medium">Atención Personalizada</h2>
-			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
-		</div>
+	<div class="relative z-10 mt-12 w-full max-w-7xl rounded-4xl border border-white/12 bg-white/8 p-8 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+		<div class="grid grid-cols-4 gap-4">
+			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
+					<i class="fa-solid fa-user text-xl"></i>
+				</span>
 
-		<div class="text-white">
-			<h2 class="text-2xl font-medium">Experiencia y Confianza</h2>
-			<p>Años de formación y práctica <br> médica a tu servicio</p>
-		</div>
+				<div class="min-w-0">
+					<h2 class="text-lg font-semibold leading-tight">Atención Personalizada</h2>
+					<p class="mt-2 text-sm leading-6 text-white/75">Escucha activa y enfoque en lo que realmente importa.</p>
+				</div>
+			</article>
 
-		<div class="text-white">
-			<h2 class="text-2xl font-medium">Tiempo de Calidad</h2>
-			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
-		</div>
+			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
+					<i class="fa-solid fa-shield-halved text-xl"></i>
+				</span>
 
-		<div class="text-white">
-			<h2 class="text-2xl font-medium">Acompañamiento real</h2>
-			<p>Escucha activa y enfoque <br> En lo que realmente importa.</p>
+				<div class="min-w-0">
+					<h2 class="text-lg font-semibold leading-tight">Experiencia y Confianza</h2>
+					<p class="mt-2 text-sm leading-6 text-white/75">Años de formación y práctica médica a tu servicio.</p>
+				</div>
+			</article>
+
+			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
+					<i class="fa-regular fa-clock text-xl"></i>
+				</span>
+
+				<div class="min-w-0">
+					<h2 class="text-lg font-semibold leading-tight">Tiempo de Calidad</h2>
+					<p class="mt-2 text-sm leading-6 text-white/75">Consultas sin prisa, con tiempo real para escucharte.</p>
+				</div>
+			</article>
+
+			<article class="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-lg shadow-black/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white/8">
+				<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 shadow-inner shadow-white/10">
+					<i class="fa-regular fa-heart text-xl"></i>
+				</span>
+
+				<div class="min-w-0">
+					<h2 class="text-lg font-semibold leading-tight">Acompañamiento real</h2>
+					<p class="mt-2 text-sm leading-6 text-white/75">Cercanía humana y seguimiento claro en cada etapa.</p>
+				</div>
+			</article>
 		</div>
 	</div>
 </section>
+
+
+<section class="relative min-h-screen w-full overflow-hidden bg-white text-[#1c1a17]">
+	<div class="mx-auto w-full max-w-7xl px-16 py-20">
+		<div class="grid grid-cols-[44%_56%] items-center gap-16">
+			<div class="flex justify-center">
+				<img
+					src="/img/dracosta.png"
+					alt="Dr. Acosta"
+					class="h-auto max-h-128 w-auto max-w-xl object-contain object-center"
+				/>
+			</div>
+
+			<div class="relative flex justify-center px-8 py-20 mt-20">
+				<div class="w-full max-w-3xl pr-8">
+					<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Acerca de</p>
+					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-balance text-black">
+						Dr. Oscar Acosta
+					</h2>
+					<p class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-black">
+						Medicina con enfoque preventivo y humano.
+					</p>
+					<p class="mt-8 max-w-2xl text-xl leading-9 text-black">
+						Experiencia en salud ocupacional, planeación estratégica y programas preventivos de higiene, salud mental, ergonomía y medicina laboral.
+					</p>
+					<p class="mt-5 max-w-2xl text-xl leading-9 text-black">
+						También he liderado programas de salud empresarial y tengo experiencia en hospitalización, cuidados intensivos y emergencias médicas.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-16 border-t border-[#eadfce] pt-10">
+			<div class="flex items-end justify-between gap-8">
+				<div>
+					<h3 class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-black">
+						Trayectoria clínica en movimiento.
+					</h3>
+				</div>
+			</div>
+
+			<div class="relative mt-10 overflow-hidden rounded-4xl border border-[#d9e6d7] bg-white shadow-[0_24px_70px_rgba(31,61,39,0.10)]">
+				<div id="timeline-carousel" class="relative h-192 overflow-hidden">
+					<article class="timeline-slide absolute inset-0 opacity-100 transition-opacity duration-700" data-slide>
+						<img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80" alt="Consulta médica" class="absolute inset-0 h-full w-full object-cover" />
+						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
+						<div class="absolute inset-0 flex items-end p-10">
+							<div class="max-w-3xl text-white">
+								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2015 - Actualidad</p>
+								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Director Médico</h4>
+								<p class="mt-4 text-2xl font-medium text-white/90">Active Service Health SAC, Lima, Perú.</p>
+								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Planeación, organización, dirección, implementación, monitoreo y evaluación permanente del proceso de entrega de servicios integrales de calidad con énfasis en salud ocupacional, seguridad y medio ambiente.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
+						<img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1600&q=80" alt="Medicina interna" class="absolute inset-0 h-full w-full object-cover" />
+						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
+						<div class="absolute inset-0 flex items-end p-10">
+							<div class="max-w-3xl text-white">
+								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2008 - Actualidad</p>
+								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Medicina Interna</h4>
+								<p class="mt-4 text-2xl font-medium text-white/90">Clínica San Pablo-Surco, Surco - Lima.</p>
+								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención de dolencias complejas en salud en forma ambulatoria, hospitalización y cuidados intensivos.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
+						<img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1600&q=80" alt="Medicina corporativa" class="absolute inset-0 h-full w-full object-cover" />
+						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
+						<div class="absolute inset-0 flex items-end p-10">
+							<div class="max-w-3xl text-white">
+								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2010 - 2015</p>
+								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Médico Corporativo Perú</h4>
+								<p class="mt-4 text-2xl font-medium text-white/90">Odebrecht, Lima.</p>
+								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Responsable de la dirección del sistema de salud de distintas obras, con cobertura en IRSA Sur, IRSA Norte, Muelle Minerales Callao, Bayovar, Trasvase Olmos y Carhua.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
+						<img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1600&q=80" alt="Hospital y urgencias" class="absolute inset-0 h-full w-full object-cover" />
+						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
+						<div class="absolute inset-0 flex items-end p-10">
+							<div class="max-w-3xl text-white">
+								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2009 - 2010</p>
+								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Médico internista</h4>
+								<p class="mt-4 text-2xl font-medium text-white/90">ESSALUD Seguro Social de Salud, La Molina - Lima.</p>
+								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención médica ambulatoria, hospitalaria y de emergencia para pacientes que acudían al hospital, con responsabilidad en la implementación y actualización de guías de manejo clínico del adulto.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="timeline-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-slide>
+						<img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80" alt="Atención médica" class="absolute inset-0 h-full w-full object-cover" />
+						<div class="absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/10"></div>
+						<div class="absolute inset-0 flex items-end p-10">
+							<div class="max-w-3xl text-white">
+								<p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/80">2002 - 2008</p>
+								<h4 class="mt-4 font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-white">Coordinador Médico</h4>
+								<p class="mt-4 text-2xl font-medium text-white/90">Policlínico Tarica - Minera Barrick.</p>
+								<p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Atención médica ambulatoria, hospitalaria y de emergencia de pacientes del campamento minero La Alborada.</p>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div id="timeline-dots" class="pointer-events-auto absolute bottom-8 left-10 z-20 flex items-center gap-2"></div>
+
+				<div class="absolute bottom-8 right-10 z-20 flex items-center gap-3">
+					<button
+						id="timeline-prev"
+						type="button"
+						aria-label="Hito anterior"
+						class="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20"
+					>
+						<i class="fa-solid fa-arrow-left"></i>
+					</button>
+					<button
+						id="timeline-next"
+						type="button"
+						aria-label="Siguiente hito"
+						class="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/20"
+					>
+						<i class="fa-solid fa-arrow-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+				<div class="grid grid-cols-[44%_56%] items-center gap-16">
+			<div class="flex justify-center">
+				<img
+					src="/img/img42.jpg"
+					alt="Recordatorios y seguimiento de citas"
+					class="h-auto max-h-128 w-auto max-w-xl object-contain object-center"
+				/>
+			</div>
+
+			<div class="relative flex justify-center px-8 py-20 mt-20">
+				<div class="w-full max-w-3xl pr-8">
+					<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Comunicación</p>
+					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-balance text-black">
+						Toda tu atención, organizada en un solo lugar.
+					</h2>
+					<p class="mt-8 max-w-2xl text-xl leading-9 text-black">
+						Recibe recordatorios de tus citas y seguimientos de forma automática, sin depender de mensajes sueltos o llamadas que se pierden.
+					</p>
+					<p class="mt-5 max-w-2xl text-xl leading-9 text-black">
+						Cada consulta queda registrada de forma ordenada, para que tu historia clínica y tus datos estén siempre disponibles cuando los necesites.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const carousel = document.querySelector<HTMLElement>('#timeline-carousel');
+
+	if (carousel) {
+		const slides = Array.from(carousel.querySelectorAll<HTMLElement>('.timeline-slide'));
+		const dotsContainer = document.querySelector<HTMLElement>('#timeline-dots');
+		const prevButton = document.querySelector<HTMLButtonElement>('#timeline-prev');
+		const nextButton = document.querySelector<HTMLButtonElement>('#timeline-next');
+		const AUTO_ADVANCE_MS = 5500;
+
+		let current = 0;
+		let timer: ReturnType<typeof setInterval> | null = null;
+
+		const dots = slides.map((_, index) => {
+			const dot = document.createElement('button');
+			dot.type = 'button';
+			dot.setAttribute('aria-label', `Ir al hito ${index + 1}`);
+			dot.className = 'h-2 w-2 rounded-full bg-white/40 transition-all duration-300';
+			dot.addEventListener('click', () => {
+				goTo(index);
+				restartAuto();
+			});
+			dotsContainer?.appendChild(dot);
+			return dot;
+		});
+
+		function render() {
+			slides.forEach((slide, index) => {
+				slide.classList.toggle('opacity-100', index === current);
+				slide.classList.toggle('opacity-0', index !== current);
+			});
+			dots.forEach((dot, index) => {
+				const active = index === current;
+				dot.classList.toggle('bg-white', active);
+				dot.classList.toggle('w-6', active);
+				dot.classList.toggle('bg-white/40', !active);
+				dot.classList.toggle('w-2', !active);
+			});
+		}
+
+		function goTo(index: number) {
+			current = (index + slides.length) % slides.length;
+			render();
+		}
+
+		function next() {
+			goTo(current + 1);
+		}
+
+		function prev() {
+			goTo(current - 1);
+		}
+
+		function stopAuto() {
+			if (timer) clearInterval(timer);
+		}
+
+		function startAuto() {
+			stopAuto();
+			timer = setInterval(next, AUTO_ADVANCE_MS);
+		}
+
+		function restartAuto() {
+			startAuto();
+		}
+
+		prevButton?.addEventListener('click', () => {
+			prev();
+			restartAuto();
+		});
+		nextButton?.addEventListener('click', () => {
+			next();
+			restartAuto();
+		});
+
+		carousel.addEventListener('mouseenter', stopAuto);
+		carousel.addEventListener('mouseleave', startAuto);
+
+		render();
+		startAuto();
+	}
+</script>
+<section class="relative bg-[#07110a] text-white">
+
+	<div class="services-stack relative h-screen w-full overflow-hidden">
+		<p class="pointer-events-none absolute left-12 top-10 z-60 font-['Onest',sans-serif] text-3xl font-semibold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]">
+			Mis servicios
+		</p>
+
+		{services.map((service, i) => (
+			<article class="service-layer absolute inset-0 grid place-items-end overflow-hidden" style={`z-index: ${i + 1}`}>
+				<img src={service.image} alt={service.title} class="service-image absolute inset-0 h-full w-full object-cover" />
+				<div class="absolute inset-0 bg-linear-to-r from-black/80 via-black/45 to-black/20"></div>
+				<div class="service-content relative z-10 w-full px-12 py-12">
+					<div class="max-w-4xl">
+						<p class="text-sm font-semibold uppercase tracking-[0.3em] text-white/75">{service.number} / {service.title}</p>
+						<h3 class="mt-4 font-['Cormorant_Garamond',serif] text-7xl font-semibold leading-none text-white">{service.description}</h3>
+					</div>
+				</div>
+			</article>
+		))}
+	</div>
+</section>
+
+<script>
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	const stack = document.querySelector<HTMLElement>('.services-stack');
+
+	if (stack) {
+		const layers: HTMLElement[] = gsap.utils.toArray('.service-layer', stack);
+		const images = layers.map((layer) => layer.querySelector<HTMLElement>('.service-image'));
+		const contents = layers.map((layer) => layer.querySelector<HTMLElement>('.service-content'));
+		const total = layers.length;
+
+		// How much scroll distance (in viewport heights) each panel gets. Bigger
+		// means the slide-up/blur transition plays out more gradually as you scroll
+		// instead of snapping between images.
+		const VH_PER_PANEL = 2.2;
+
+		// Every layer but the first starts parked just below the viewport.
+		gsap.set(layers.slice(1), { yPercent: 100 });
+		gsap.set(images, { scale: 1, filter: 'blur(0px)' });
+		gsap.set(contents.slice(1), { autoAlpha: 0, y: 40 });
+
+		// One pinned timeline drives the whole sequence: the section locks in place
+		// while the user scrolls, and that scroll position scrubs each layer sliding
+		// up from the bottom to cover the previous one, which blurs and shrinks
+		// away as it gets covered. When the last layer has taken over, the pin
+		// releases and normal scrolling continues into the next section.
+		const master = gsap.timeline({
+			defaults: { ease: 'power2.inOut' },
+			scrollTrigger: {
+				trigger: stack,
+				start: 'top top',
+				end: () => `+=${total * window.innerHeight * VH_PER_PANEL}`,
+				scrub: 1,
+				pin: true,
+				anticipatePin: 1,
+				invalidateOnRefresh: true,
+			},
+		});
+
+		layers.forEach((layer, i) => {
+			const label = `panel-${i}`;
+			master.addLabel(label);
+
+			if (i > 0) {
+				master
+					.to(contents[i - 1], { autoAlpha: 0, y: -40, duration: 0.5, ease: 'power1.in' }, label)
+					.to(images[i - 1], { filter: 'blur(14px)', scale: 0.85, duration: 1.2, ease: 'power1.inOut' }, label)
+					.to(layer, { yPercent: 0, duration: 1.2, ease: 'power2.inOut' }, label)
+					.to(contents[i], { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out' }, `${label}+=0.9`);
+			} else {
+				master.to(contents[i], { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out' }, label);
+			}
+		});
+	}
+</script>
