@@ -121,11 +121,11 @@ import '../styles/global.css';
 
 			bubbleClose?.addEventListener('click', dismissBubble);
 
-			type ChatStep = 'name' | 'dob' | 'email' | 'done';
+			type ChatStep = 'patient_type' | 'name' | 'dob' | 'email' | 'done';
 
-			let step: ChatStep = 'name';
+			let step: ChatStep = 'patient_type';
 			let started = false;
-			const answers = { name: '', dob: '', email: '' };
+			const answers = { patientType: '', name: '', dob: '', email: '' };
 
 			function addMessage(text: string, from: 'bot' | 'user') {
 				if (!messagesEl) return;
@@ -169,22 +169,90 @@ import '../styles/global.css';
 				return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 			}
 
-			function looksLikeDate(value: string) {
-				return /^\d{1,2}[/-]\d{1,2}[/-]\d{2,4}$/.test(value.trim());
+			function formatDateDisplay(iso: string) {
+				const [year, month, day] = iso.split('-');
+				return `${day}/${month}/${year}`;
+			}
+
+			function addQuickReplies(options: { label: string; value: string }[], onSelect: (value: string, label: string) => void) {
+				if (!messagesEl) return;
+				const row = document.createElement('div');
+				row.className = 'flex flex-wrap justify-start gap-2';
+
+				options.forEach((option) => {
+					const button = document.createElement('button');
+					button.type = 'button';
+					button.textContent = option.label;
+					button.className =
+						'rounded-full border border-[#25D366] bg-white px-4 py-2 font-[\'Onest\',sans-serif] text-sm font-semibold text-[#1c1a17] transition-colors duration-200 hover:bg-[#25D366]/10';
+					button.addEventListener('click', () => {
+						row.remove();
+						onSelect(option.value, option.label);
+					});
+					row.appendChild(button);
+				});
+
+				messagesEl.appendChild(row);
+				messagesEl.scrollTop = messagesEl.scrollHeight;
+			}
+
+			function lockInputWhileChoosing() {
+				if (!inputEl) return;
+				inputEl.disabled = true;
+				inputEl.setAttribute('placeholder', 'Elige una opción arriba…');
 			}
 
 			async function startConversation() {
 				if (started) return;
 				started = true;
+				lockInputWhileChoosing();
+
 				await botSay('¡Hola! 👋 Soy el asistente virtual del Dr. Acosta.');
-				await botSay('Antes de continuar, necesito algunos datos. ¿Cuál es tu nombre completo?', 900);
-				inputEl?.setAttribute('placeholder', 'Tu nombre completo');
+				await botSay('Antes de continuar, cuéntame: ¿ya eres paciente del Dr. Acosta o es tu primera vez con nosotros?', 900);
+
+				addQuickReplies(
+					[
+						{ label: 'Ya soy paciente', value: 'existing' },
+						{ label: 'Soy nuevo', value: 'new' },
+					],
+					async (value, label) => {
+						answers.patientType = value;
+						addMessage(label, 'user');
+						step = 'name';
+
+						if (inputEl) {
+							inputEl.disabled = false;
+							inputEl.type = 'text';
+							inputEl.setAttribute('placeholder', 'Tu nombre completo');
+						}
+
+						await botSay('¿Cuál es tu nombre completo?');
+						inputEl?.focus();
+					}
+				);
 			}
 
 			formEl?.addEventListener('submit', async (event) => {
 				event.preventDefault();
-				const value = inputEl?.value.trim() ?? '';
-				if (!value || !inputEl || inputEl.disabled) return;
+				if (!inputEl || inputEl.disabled) return;
+
+				if (step === 'dob') {
+					const isoValue = inputEl.value;
+					if (!isoValue) return;
+
+					const displayValue = formatDateDisplay(isoValue);
+					addMessage(displayValue, 'user');
+					inputEl.value = '';
+					answers.dob = displayValue;
+					step = 'email';
+					await botSay('Perfecto. Por último, ¿cuál es tu correo electrónico?');
+					inputEl.type = 'text';
+					inputEl.setAttribute('placeholder', 'tucorreo@ejemplo.com');
+					return;
+				}
+
+				const value = inputEl.value.trim();
+				if (!value) return;
 
 				addMessage(value, 'user');
 				inputEl.value = '';
@@ -192,17 +260,11 @@ import '../styles/global.css';
 				if (step === 'name') {
 					answers.name = value;
 					step = 'dob';
-					await botSay(`Gracias, ${value.split(' ')[0]}. ¿Cuál es tu fecha de nacimiento? (dd/mm/aaaa)`);
-					inputEl.setAttribute('placeholder', 'dd/mm/aaaa');
-				} else if (step === 'dob') {
-					if (!looksLikeDate(value)) {
-						await botSay('Esa fecha no parece válida. ¿Puedes escribirla como dd/mm/aaaa?');
-						return;
-					}
-					answers.dob = value;
-					step = 'email';
-					await botSay('Perfecto. Por último, ¿cuál es tu correo electrónico?');
-					inputEl.setAttribute('placeholder', 'tucorreo@ejemplo.com');
+					await botSay(`Gracias, ${value.split(' ')[0]}. ¿Cuál es tu fecha de nacimiento?`);
+					inputEl.type = 'date';
+					inputEl.max = new Date().toISOString().split('T')[0];
+					inputEl.min = '1900-01-01';
+					inputEl.removeAttribute('placeholder');
 				} else if (step === 'email') {
 					if (!isValidEmail(value)) {
 						await botSay('Ese correo no parece válido, ¿puedes revisarlo?');
