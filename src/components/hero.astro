@@ -54,7 +54,10 @@ const services = [
 	<div class="absolute inset-0 -z-10 bg-black/50"></div>
 
 		<div class="relative z-10 mt-20 max-w-2xl text-center text-[#f7f1e8] lg:mt-24">
-		<p class="mb-3 text-sm uppercase tracking-widest opacity-80">Dr. Acosta</p>
+		<p class="mb-3 flex items-center justify-center gap-4 text-sm uppercase tracking-widest opacity-80">
+			<img src="/img/dracosta.png" alt="" class="h-7 w-7 rounded-full object-cover" />
+			Dr. Acosta
+		</p>
 		<h1 class="font-['Cormorant_Garamond',serif] text-6xl font-semibold leading-none text-balance sm:text-7xl lg:text-8xl">
 			Un médico que te acompaña, con tiempo.
 		</h1>
@@ -243,29 +246,76 @@ const services = [
 			</div>
 		</div>
 
-				<div class="mt-12 grid grid-cols-1 items-center gap-10 border-t border-[#eadfce] pt-8 lg:mt-16 lg:grid-cols-[44%_56%] lg:gap-16 lg:pt-10">
-			<div class="flex justify-center">
-				<img
-					src="/img/img42.jpg"
-					alt="Recordatorios y seguimiento de citas"
-					class="h-auto max-h-72 w-auto max-w-full object-contain object-center sm:max-h-96 lg:max-h-128 lg:max-w-xl"
-				/>
-			</div>
+	</div>
+</section>
 
-			<div class="relative flex justify-center px-0 py-4 mt-0 lg:px-8 lg:py-20 lg:mt-20">
-				<div class="w-full max-w-3xl pr-0 lg:pr-8">
-					<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Comunicación</p>
-					<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-balance text-black sm:text-5xl lg:text-7xl">
-						Toda tu atención, organizada en un solo lugar.
-					</h2>
-					<p class="mt-6 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-8 lg:text-xl lg:leading-9">
-						Recibe recordatorios de tus citas y seguimientos de forma automática, sin depender de mensajes sueltos o llamadas que se pierden.
-					</p>
-					<p class="mt-4 max-w-2xl text-base leading-7 text-black sm:text-lg lg:mt-5 lg:text-xl lg:leading-9">
-						Cada consulta queda registrada de forma ordenada, para que tu historia clínica y tus datos estén siempre disponibles cuando los necesites.
-					</p>
-				</div>
-			</div>
+<section id="preguntas-frecuentes" class="relative border-t border-[#eadfce] bg-white text-[#1c1a17]">
+	<div class="mx-auto w-full max-w-4xl px-5 py-14 sm:px-8 lg:px-16 lg:py-20">
+		<p class="text-sm font-semibold uppercase tracking-[0.38em] text-[#3f6f4a]">Preguntas frecuentes</p>
+		<h2 class="mt-5 font-['Cormorant_Garamond',serif] text-4xl font-semibold leading-none text-balance text-black sm:text-5xl lg:text-7xl">
+			Resolvemos tus dudas más comunes.
+		</h2>
+
+		<div class="mt-10 flex flex-col gap-4 lg:mt-12">
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Cómo puedo agendar una cita?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Escríbele a nuestro asistente virtual desde el botón de mensaje en la esquina de la pantalla, o contáctanos directamente: te ayudamos a coordinar el horario que mejor te convenga.
+				</p>
+			</details>
+
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Qué debo llevar a mi primera consulta?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Trae un documento de identidad y, si los tienes, tus exámenes o historial médico reciente, para que la consulta sea lo más completa posible.
+				</p>
+			</details>
+
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Atienden consultas y programas para empresas?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Sí. El Dr. Acosta tiene amplia experiencia en salud ocupacional y programas de salud empresarial: exámenes médicos, ergonomía, salud mental laboral y más.
+				</p>
+			</details>
+
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Puedo escribir si tengo dudas antes de la consulta?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Claro. Nuestro asistente virtual está disponible para responder tus preguntas o ayudarte a decidir qué tipo de consulta necesitas.
+				</p>
+			</details>
+
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Recibiré recordatorios de mis citas?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Sí, recibirás recordatorios automáticos de tus citas y seguimientos, sin depender de mensajes sueltos o llamadas que se pierden.
+				</p>
+			</details>
+
+			<details class="group rounded-3xl border border-[#eadfce] bg-[#faf8f4] p-6 open:bg-white">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-['Onest',sans-serif] text-lg font-semibold text-black [&::-webkit-details-marker]:hidden">
+					¿Cómo se maneja mi historia clínica?
+					<i class="fa-solid fa-chevron-down shrink-0 text-sm text-[#3f6f4a] transition-transform duration-300 group-open:rotate-180"></i>
+				</summary>
+				<p class="mt-4 text-base leading-7 text-[#5a5548]">
+					Cada consulta queda registrada de forma ordenada, para que tu historia clínica y tus datos estén siempre disponibles cuando los necesites.
+				</p>
+			</details>
 		</div>
 	</div>
 </section>
