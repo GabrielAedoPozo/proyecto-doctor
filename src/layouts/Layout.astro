@@ -121,11 +121,11 @@ import '../styles/global.css';
 
 			bubbleClose?.addEventListener('click', dismissBubble);
 
-			type ChatStep = 'patient_type' | 'name' | 'dob' | 'email' | 'done';
+			type ChatStep = 'patient_type' | 'name' | 'dob' | 'email' | 'reason' | 'done';
 
 			let step: ChatStep = 'patient_type';
 			let started = false;
-			const answers = { patientType: '', name: '', dob: '', email: '' };
+			const answers = { patientType: '', name: '', dob: '', email: '', reason: '', appointmentTiming: '' };
 
 			function addMessage(text: string, from: 'bot' | 'user') {
 				if (!messagesEl) return;
@@ -202,6 +202,57 @@ import '../styles/global.css';
 				inputEl.setAttribute('placeholder', 'Elige una opción arriba…');
 			}
 
+			async function finishConversation() {
+				step = 'done';
+				await botSay('¡Listo! Ya tengo tus datos. En breve un miembro del equipo del Dr. Acosta se pondrá en contacto contigo. 🩺');
+				if (inputEl) {
+					inputEl.disabled = true;
+					inputEl.setAttribute('placeholder', 'Conversación finalizada');
+				}
+			}
+
+			function askAppointmentTiming() {
+				lockInputWhileChoosing();
+				addQuickReplies(
+					[
+						{ label: 'Lo antes posible', value: 'asap' },
+						{ label: 'Esta semana', value: 'this_week' },
+						{ label: 'La próxima semana', value: 'next_week' },
+						{ label: 'Aún no lo sé', value: 'unsure' },
+					],
+					async (value, label) => {
+						answers.appointmentTiming = value;
+						addMessage(label, 'user');
+						await finishConversation();
+					}
+				);
+			}
+
+			async function askReason() {
+				step = 'reason';
+				lockInputWhileChoosing();
+				await botSay('Gracias. Una última cosa: ¿cuál es el motivo de tu consulta?');
+
+				addQuickReplies(
+					[
+						{ label: 'Agendar una cita', value: 'appointment' },
+						{ label: 'Consulta médica general', value: 'general' },
+						{ label: 'Otro motivo', value: 'other' },
+					],
+					async (value, label) => {
+						answers.reason = value;
+						addMessage(label, 'user');
+
+						if (value === 'appointment') {
+							await botSay('¿Para cuándo te gustaría tu cita?');
+							askAppointmentTiming();
+						} else {
+							await finishConversation();
+						}
+					}
+				);
+			}
+
 			async function startConversation() {
 				if (started) return;
 				started = true;
@@ -271,10 +322,12 @@ import '../styles/global.css';
 						return;
 					}
 					answers.email = value;
-					step = 'done';
-					await botSay('¡Listo! Ya tengo tus datos. En breve un miembro del equipo del Dr. Acosta se pondrá en contacto contigo. 🩺');
-					inputEl.disabled = true;
-					inputEl.setAttribute('placeholder', 'Conversación finalizada');
+
+					if (answers.patientType === 'new') {
+						await askReason();
+					} else {
+						await finishConversation();
+					}
 				}
 			});
 
