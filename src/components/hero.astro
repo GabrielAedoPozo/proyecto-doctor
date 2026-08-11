@@ -402,7 +402,7 @@ const services = [
 		startAuto();
 	}
 </script>
-<section id="servicios" class="relative mt-10 bg-[#07110a] text-white lg:mt-0">
+<section id="servicios" class="relative bg-[#07110a] pt-10 text-white lg:pt-0">
 
 	<div class="services-stack relative h-screen w-full overflow-hidden">
 		<p class="pointer-events-none absolute left-5 top-5 z-60 font-['Onest',sans-serif] text-lg font-semibold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)] sm:left-8 sm:top-8 sm:text-2xl lg:left-12 lg:top-10 lg:text-3xl">
@@ -440,8 +440,13 @@ const services = [
 
 		// How much scroll distance (in viewport heights) each panel gets. Bigger
 		// means the slide-up/blur transition plays out more gradually as you scroll
-		// instead of snapping between images.
-		const VH_PER_PANEL = 2.2;
+		// instead of snapping between images. Mobile gets a shorter distance: touch
+		// scrolling covers far less ground per gesture than a mouse wheel does, so
+		// the desktop value made mobile feel dead (barely moves) then jumpy (a big
+		// swipe suddenly covers a lot of animation at once).
+		const DESKTOP_VH_PER_PANEL = 2.2;
+		const MOBILE_VH_PER_PANEL = 1.1;
+		const getVhPerPanel = () => (window.innerWidth < 1024 ? MOBILE_VH_PER_PANEL : DESKTOP_VH_PER_PANEL);
 
 		// Every layer but the first starts parked just below the viewport.
 		gsap.set(layers.slice(1), { yPercent: 100 });
@@ -458,8 +463,10 @@ const services = [
 			scrollTrigger: {
 				trigger: stack,
 				start: 'top top',
-				end: () => `+=${total * window.innerHeight * VH_PER_PANEL}`,
-				scrub: 1,
+				end: () => `+=${total * window.innerHeight * getVhPerPanel()}`,
+				// true = scrub ties directly to scroll position with no catch-up lag,
+				// which is what makes it feel immediate on touch instead of "jumping".
+				scrub: true,
 				pin: true,
 				anticipatePin: 1,
 				invalidateOnRefresh: true,
@@ -483,7 +490,7 @@ const services = [
 	}
 </script>
 
-<section id="contacto" class="relative mt-10 overflow-hidden bg-white text-[#1c1a17] lg:mt-0">
+<section id="contacto" class="relative overflow-hidden bg-white pt-10 text-[#1c1a17] lg:pt-0">
 	<div class="mx-auto flex w-full max-w-4xl flex-col items-center px-6 py-20 text-center sm:px-8 lg:py-32">
 		<p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#3f6f4a] sm:text-sm sm:tracking-[0.38em]">Siempre disponible</p>
 		<h2 class="mt-6 font-['Cormorant_Garamond',serif] text-5xl font-semibold leading-none text-balance text-black sm:text-7xl lg:text-9xl">
